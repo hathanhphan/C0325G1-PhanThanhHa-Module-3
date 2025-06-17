@@ -38,5 +38,3 @@ FROM students;
 
 SELECT id, CONCAT_WS(' ', last_name, first_name) AS full_name, country
 FROM teachers;
-
-EXPLAIN SELECT * FROM students;
