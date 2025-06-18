@@ -13,7 +13,7 @@ CREATE TABLE customers (
 
 CREATE TABLE orders (
     order_id INT AUTO_INCREMENT,
-    order_date DATETIME NOT NULL,
+    order_date DATE NOT NULL,
     order_total_price DECIMAL(15, 2),
     customer_id INT NOT NULL,
     CHECK (order_total_price >= 0),
@@ -60,11 +60,11 @@ INSERT INTO products (product_name, product_price) VALUES
 ('Tai nghe Sony', 1200000);
 
 INSERT INTO orders (order_date, customer_id) VALUES
-('2024-06-01 09:00:00', 1),
-('2024-06-02 10:15:00', 2),
-('2024-06-03 14:30:00', 3),
-('2024-06-04 16:45:00', 4),
-('2024-06-05 11:20:00', 5);
+('2024-06-01', 1),
+('2024-06-02', 2),
+('2024-06-03', 3),
+('2024-06-04', 4),
+('2024-06-05', 5);
 
 INSERT INTO order_details (order_id, product_id, order_quantity) VALUES
 (1, 1, 1),
