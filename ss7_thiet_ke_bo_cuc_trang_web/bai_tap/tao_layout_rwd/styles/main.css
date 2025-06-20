@@ -1,0 +1,72 @@
+#main-content {
+    margin-top: 61px;
+}
+
+#left-sidebar a {
+    display: block;
+    padding: 10px 16px;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+.ads-card {
+    display: block;
+    background-color: #eee;
+    padding: 40px;
+    margin: 16px;
+    border-radius: 16px;
+    text-align: center;
+    transition: all 0.15s linear;
+}
+
+.ads-card:hover {
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#footer {
+    padding: 20px 16px;
+    text-align: center;
+    background-color: var(--priamry-color);
+    color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+    #right-sidebar {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .ads-card {
+        width: 50%;
+        flex: 1;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    #main-content {
+        display: flex;
+        margin-top: 60px;
+    }
+    #left-sidebar {
+        padding: 0 16px;
+        width: 20%;
+        background-color: #ccc;
+    }
+    #left-sidebar a {
+        text-align: center;
+    }
+    #content-wrapper {
+        width: 60%;
+    }
+    #right-sidebar {
+        padding: 0 16px;
+        width: 20%;
+        display: block;
+    }
+    .ads-card {
+        width: 100%;
+        margin: 16px 0;
+    }
+}

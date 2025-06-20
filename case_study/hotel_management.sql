@@ -2,6 +2,8 @@ CREATE DATABASE hotel_management;
 
 USE hotel_management;
 
+-- Script tạo cơ sở dữ liệu MySQL cho hệ thống quản lý khách sạn (đầy đủ, có dữ liệu mẫu thực tế)
+
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -81,6 +83,7 @@ CREATE TABLE booking_guests (
     booking_id INT,
     full_name VARCHAR(100) NOT NULL,
     cccd VARCHAR(20) NOT NULL,
+    birth_date DATE,
     FOREIGN KEY (booking_id) REFERENCES bookings(id)
 );
 
@@ -108,7 +111,8 @@ BEGIN
     UPDATE bookings
     SET total_amount = total
     WHERE id = in_booking_id;
-END;//
+END;
+//
 
 -- Procedure kiểm tra phòng trống và đủ sức chứa
 CREATE PROCEDURE check_available_rooms_with_capacity(
@@ -134,7 +138,8 @@ BEGIN
       )
     HAVING SUM(r.capacity) >= in_total_guests
     LIMIT in_quantity;
-END;//
+END;
+//
 DELIMITER ;
 
 -- Dữ liệu mẫu cho users
@@ -194,8 +199,8 @@ INSERT INTO booking_services (booking_id, service_id, quantity) VALUES
 (2, 3, 1);
 
 -- Dữ liệu mẫu cho booking_guests
-INSERT INTO booking_guests (booking_id, full_name, cccd) VALUES
-(1, 'Lê Thị H', '001122334455'),
-(1, 'Nguyễn Văn I', '009988776655'),
-(2, 'Trần Thị K', '003344556677'),
-(2, 'Phạm Văn L', '007755331122');
+INSERT INTO booking_guests (booking_id, full_name, cccd, birth_date) VALUES
+(1, 'Lê Thị H', '001122334455', '1990-05-01'),
+(1, 'Nguyễn Văn I', '009988776655', '1988-07-20'),
+(2, 'Trần Thị K', '003344556677', '1995-09-15'),
+(2, 'Phạm Văn L', '007755331122', '1992-11-03');
