@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>[Bài tập] Nhúng CSS vào trang HTML</title>
+    <style>
+        li:nth-child(1) {
+            color: red;
+        }
+        li:nth-child(2) {
+            color: yellow;
+        }
+        li:nth-child(3) {
+            color: pink;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 style="color: green">This is heading 1</h1>
+    <div>
+        <p style="color: blue">This is an ordinary paragraph. Notice that this text is blue. The default text color for a page is defined in the body selector.</p>
+        <p>We have a list of contents below here with various colors</p>
+        <ul>
+            <li>This text is red</li>
+            <li>This text is yellow</li>
+            <li>This text is pink</li>
+        </ul>
+        <p class="content">This is another paragraph</p>
+    </div>
+</body>
+</html>

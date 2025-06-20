@@ -1,0 +1,56 @@
+html {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    line-height: 1.4;
+    font-size: 1em;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+.container {
+    max-width: 650px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+*, *:before, *:after {
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+h1 {
+    font-family: "Linux Libertine","Palatino Linotype", "Palatino", "Times New Roman", "Times", serif;
+    margin-bottom: 0;
+}
+
+.sub-title {
+    margin-top: 0;
+}
+
+article {
+    text-align: justify;
+}
+
+article p {
+    text-indent: 2em;
+}
+
+article a {
+    color: #36c;
+    text-decoration: none;
+}
+
+article a:hover {
+    text-decoration: underline;
+}
+
+article sup {
+    vertical-align: super;
+    font-size: 0.6em;
+}
