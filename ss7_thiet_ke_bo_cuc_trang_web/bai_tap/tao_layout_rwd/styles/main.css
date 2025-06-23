@@ -1,5 +1,5 @@
 #main-content {
-    margin-top: 61px;
+    margin-top: 60px;
 }
 
 #left-sidebar a {
@@ -47,7 +47,7 @@ h1 {
 @media screen and (min-width: 1024px) {
     #main-content {
         display: flex;
-        margin-top: 60px;
+        margin-top: 58px;
     }
     #left-sidebar {
         padding: 0 16px;

@@ -9,25 +9,22 @@
 }
 .header-logo {
     padding: 10px;
+    border-bottom: 1px solid #ffffff;
 }
 .header-logo img {
-    width: 40px;
+    width: 80px;
     height: 100%;
 }
 
 .navbar-button {
     position: absolute;
-    top: 10px;
+    top: 7px;
     right: 10px;
     font-size: 1.5rem;
     padding: 0 10px;
 }
 .navbar-toggle {
-    color: #ffffff;
-}
-
-.main-menu {
-    width: 100%;
+    color: #000;
 }
 
 .main-menu .menu-item {
@@ -36,7 +33,6 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    color: #ffffff;
     height: 100%;
 }
 
@@ -44,27 +40,13 @@
     flex: 1;
     display: block;
     padding: 10px 20px;
-    color: #ffffff;
-    font-weight: 600;
+    color: #000;
     height: 100%;
 }
 
 .main-menu .menu-item a:hover {
     text-decoration: none;
-}
-
-.sub-menu-toggle {
-    padding: 10px 20px;
-}
-
-.main-menu .sub-menu {
-    width: 100%;
-    display: none;
-}
-
-.main-menu .sub-menu .menu-item a {
-    font-weight: 400;
-    padding-left: 40px;
+    color: red;
 }
 
 .main-menu-ul {
@@ -76,55 +58,34 @@
 .main-menu-ul.active {
     max-height: 1000px;
 }
-.sub-menu.active {
-    display: block;
-}
 
 @media screen and (min-width: 1024px) {
-    #navbar {
-        display: flex;
+    .header-logo {
+        border-bottom: 5px solid #ffffff;
     }
     .main-menu-ul {
         max-height: none;
         display: flex;
+        justify-content: center;
         align-items: center;
         height: 100%;
         overflow: visible;
     }
     .main-menu .menu-item a {
+        position: relative;
         line-height: 1;
         padding: 20px;
         transition: all 0.15s linear;
     }
-    .main-menu .menu-item a:hover {
-        background-color: #ffffff;
-        color: var(--priamry-color);
-    }
-    .menu-item.header-button {
-        flex: 1;
-        text-align: right;
-        display: block;
-    }
-    .menu-item.header-button a {
-        display: inline-block;
-    }
-    .sub-menu {
+    .main-menu .menu-item:not(:last-child) a:after {
+        content: "";
         position: absolute;
-        top: 100%;
-        left: 0;
-        overflow: hidden;
-        z-index: 100;
-    }
-    .main-menu .menu-item:hover > .sub-menu {
-        display: block;
-        min-width: 200px;
-        background-color: var(--priamry-color);
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        top: 16px;
+        right: 0;
+        bottom: 16px;
+        border-right: 1px solid #000;
     }
     .navbar-button {
-        display: none;
-    }
-    .sub-menu-toggle {
         display: none;
     }
 }
