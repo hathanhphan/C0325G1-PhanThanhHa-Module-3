@@ -1,0 +1,150 @@
+body {
+    font-family: "Segoe UI", SegoeUI, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #000;
+    font-size: 1.125rem;
+}
+
+.mod-banner {
+    background-color: #D3E1F4;
+}
+
+.work-mark {
+    height: 18px;
+    margin-bottom: 16px;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+.mod-banner .description {
+    margin: 34px 0;
+}
+
+.mod-banner .banner-image {
+    object-fit: contain;
+    display: block;
+    margin-left: -16px;
+    width: calc(100% + 32px);
+}
+
+h2 {
+    font-size: 1.8125rem;
+}
+
+h3 {
+    font-size: 1.3125rem;
+}
+
+.mod-two-cards, .mod-slider {
+    font-size: 1rem;
+}
+
+.card-link {
+    color: #0067b8;
+    text-decoration: none;
+    transition: all 0.15s linear;
+    font-weight: 600;
+}
+
+.card-link:hover {
+    text-decoration: underline;
+}
+
+.mod-slider .card:nth-child(odd) {
+    margin-bottom: 48px;
+}
+
+.mod-slider .card:nth-child(even) {
+    margin-top: 48px;
+}
+
+.mod-slider .card {
+    width: 276px;
+}
+
+.mod-slider .card > img {
+    width: 100%;
+    object-fit: cover;
+    margin-right: 12px;
+    margin-left: 12px;
+    border-radius: 5%;
+}
+
+.surface-slider {
+    position: relative;
+    padding-bottom: 60px; /* chừa chỗ cho arrows/progress */
+}
+
+.surface-slider .slide {
+    position: relative;
+    overflow: hidden;
+}
+.surface-slider .slide img {
+    width: 100%;
+    display: block;
+}
+.surface-slider .caption {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: #fff;
+}
+
+/* Progress bar (thay cho dots) */
+.surface-slider .progress-bar {
+    display: flex !important;
+    justify-content: center;
+    margin-top: 10px;
+}
+.surface-slider .slick-dots {
+    display: flex !important;
+    list-style: none;
+    padding: 0;
+}
+.surface-slider .slick-dots li {
+    margin: 0 4px;
+}
+.surface-slider .slick-dots li button.dot-segment {
+    width: 40px;
+    height: 4px;
+    background: #ddd;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.surface-slider .slick-dots li.slick-active button.dot-segment {
+    background: #0067B8;  /* màu xanh active */
+}
+
+/* Arrows */
+.surface-slider .arrows {
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+}
+.surface-slider .slick-prev,
+.surface-slider .slick-next {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+    margin-right: 8px;
+    cursor: pointer;
+}
+.surface-slider .slick-slide:nth-of-type(odd)  { margin-bottom: 30px; }
+.surface-slider .slick-slide:nth-of-type(even) { margin-top:    30px; }
+
+.surface-slider .slick-list {
+    /* để “kéo” phần padding của .slick-slide vào đúng vị trí */
+    margin: 0 -16px;
+}
+.surface-slider .slick-slide {
+    box-sizing: border-box;  /* bắt buộc để padding không phá layout */
+    padding: 0 16px;          /* mỗi slide sẽ có 8px hai bên */
+}

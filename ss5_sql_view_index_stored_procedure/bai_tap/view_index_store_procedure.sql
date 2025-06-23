@@ -4,10 +4,16 @@ create database demo;
 use demo;
 
 -- ---------- Bước 2: Tạo bảng Products -------------
-Tạo store procedure lấy tất cả thông tin của tất cả các sản phẩm trong bảng product
-Tạo store procedure thêm một sản phẩm mới
-Tạo store procedure sửa thông tin sản phẩm theo id
-Tạo store procedure xoá sản phẩm theo id
+create table products (
+	id int auto_increment,
+    product_code varchar(20) not null unique, -- Tạo Unique Index trên bảng Products (sử dụng cột productCode để tạo chỉ mục)
+    product_name varchar(100) not null,
+    product_price decimal(15, 2) not null,
+    product_amount int unsigned not null,
+    product_description text not null,
+    product_status bit(1) not null,
+    primary key(id)
+);
 
 -- Du lieu mau
 INSERT INTO products (product_code, product_name, product_price, product_amount, product_description, product_status) VALUES
