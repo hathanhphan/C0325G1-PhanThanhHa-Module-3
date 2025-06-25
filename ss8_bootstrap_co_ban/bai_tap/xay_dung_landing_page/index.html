@@ -8,12 +8,104 @@
     <title>[Bài tập] Xây dựng Landing Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css"
+          integrity="sha512-t7Few9xlddEmgd3oKZQahkNI4dS6l80+eGEzFQiqtyVYdvcSG2D3Iub77R20BdotfRPA9caaRkg1tyaJiPmO0g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/app-mobile.css">
+    <link rel="stylesheet" href="styles/app-tablet.css" media="(min-width: 768px)">
+    <link rel="stylesheet" href="styles/app-desktop.css" media="(min-width: 1024px)">
 </head>
 <body>
 <header>
-    <p>Header here</p>
+    <div class="container-fluid xl-container border-bottom">
+        <nav class="navbar navbar-expand-lg navbar-custom">
+            <div class="d-flex navbar-wrapper">
+                <div class="d-flex align-items-center gap-3 d-lg-none">
+                    <!-- Mobile toggler -->
+                    <button
+                            class="navbar-toggler icon-btn"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#mainNavbar"
+                            aria-controls="mainNavbar"
+                            aria-expanded="false"
+                            aria-label="Toggle navigation"
+                    >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <button class="d-block d-lg-none icon-btn btn-search"><i class="bi bi-search"></i></button>
+                </div>
+                <!-- Logo -->
+                <a class="navbar-brand" href="#">
+                    <img src="https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png" alt="Microsoft" />
+                </a>
+                <!-- Nav links + icons -->
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><span>Surface</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><span>Computers</span> <i class="bi bi-chevron-down"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><span>Computers for Business</span> <i class="bi bi-chevron-down"></i></a>
+                        </li>
+                        <li class="nav-item d-xxl-none">
+                            <a class="nav-link" href="#"><span>More</span> <i class="bi bi-chevron-down"></i></a>
+                        </li>
+                        <li class="nav-item d-none d-xxl-block">
+                            <a class="nav-link" href="#"><span>Accessories</span> <i class="bi bi-chevron-down"></i></a>
+                        </li>
+                        <li class="nav-item d-none d-xxl-block">
+                            <a class="nav-link" href="#"><span>Shop now</span> <i class="bi bi-chevron-down"></i></a>
+                        </li>
+                        <li class="nav-item d-none d-xxl-block">
+                            <a class="nav-link" href="#"><span>Support</span></a>
+                        </li>
+                        <li class="nav-item d-none d-lg-block single-link">
+                            <a class="nav-link btn btn-surface" href="#">SHOP DEALS</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <a class="d-none d-lg-block nav-link" href="#"><span>All Microsoft</span> <i class="bi bi-chevron-down"></i></a>
+                    <button class="btn icon-btn d-none d-lg-block btn-search" type="button" aria-label="Search">
+                        <span class="title d-none d-xxl-block">Search</span>
+                        <i class="bi bi-search"></i>
+                    </button>
+                    <button class="btn icon-btn" type="button" aria-label="Cart">
+                        <span class="title d-none d-xxl-block">Card</span>
+                        <i class="bi bi-cart"></i>
+                    </button>
+                    <button class="btn icon-btn btn-user" type="button" aria-label="Sign in">
+                        <span class="title d-none d-xxl-block">Sign in</span>
+                        <i class="bi bi-person"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="container-fluid xl-container d-block d-lg-none py-1">
+        <button class="btn-surface">Surface <i class="bi bi-chevron-down"></i></button>
+    </div>
+    <div class="sub-header">
+        <div class="container-fluid xl-container">
+            <div class="toggle-switch">
+                <span class="title">Animation</span>
+                <span class="separation">|</span>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault" checked>
+                    <label class="form-check-label" for="switchCheckDefault">
+                        <span>On</span>
+                        <span>Off</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
 </header>
 <main>
     <!--Module banner-->
@@ -33,7 +125,7 @@
     </div>
     <div class="mt-5"></div>
     <!--Module two cards-->
-    <div class="mod-two-cards container-fluid text-center">
+    <div class="mod-two-cards container-fluid xl-container text-center">
         <h2>Explore all Surface Copilot+ PCs</h2>
         <div class="card-list mt-5">
             <div class="card-item mb-5">
@@ -43,7 +135,7 @@
                 >
                 <h3>Surface Pro</h3>
                 <p>Versatile 2-in-1 PCs from Microsoft.</p>
-                <a href="#" class="mt-3 card-link">Explore Surface Pro</a>
+                <a href="#" class="mt-3 btn-cta">Explore Surface Pro <i class="bi bi-chevron-right"></i></a>
             </div>
             <div class="card-item mb-5">
                 <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/laptop-platinum-landing-right-fy25?fmt=png-alpha&wid=834&hei=470&fit=crop"
@@ -52,52 +144,367 @@
                 >
                 <h3>Surface Laptop</h3>
                 <p>Sleek touchscreen PCs from Microsoft.</p>
-                <a href="#" class="mt-3 card-link">Explore Surface Laptop</a>
+                <a href="#" class="mt-3 btn-cta">Explore Surface Laptop <i class="bi bi-chevron-right"></i></a>
             </div>
         </div>
     </div>
     <div class="mt-5"></div>
     <div class="mt-5"></div>
-    <div class="mod-slider container-fluid">
-        <h2>Discover the advantages of Surface Copilot+ PCs</h2>
-        <div class="mt-2">
-            <p>The fastest, most intelligent Windows PCs ever, with brilliant new AI features designed to enhance your
-                everyday life.</p>
+    <div class="mod-slider container-fluid xl-container">
+        <div class="content">
+            <h2>Discover the advantages of Surface Copilot+ PCs</h2>
+            <div class="mt-2">
+                <p>The fastest, most intelligent Windows PCs ever, with brilliant new AI features designed to enhance your
+                    everyday life.</p>
+            </div>
         </div>
         <div class="surface-slider">
             <div class="slider">
                 <div class="slide">
-                    <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/battery-life-image-fy25?scl=1" alt="Surface Laptop">
+                    <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/battery-life-image-fy25?scl=1"
+                         alt="Surface Laptop" class="slide-image">
                     <div class="caption">
-                        <h4>The speed you need²</h4>
+                        <h4>The speed you need <sup>2</sup></h4>
                         <h3>Faster than a MacBook Air M4</h3>
-                        <p>Surface Laptop with Snapdragon X Elite using Cinebench 24 MT benchmark</p>
+                        <p><a href="#" class="text-white">Surface Laptop with Snapdragon X Elite using Cinebench 24 MT
+                            benchmark</a></p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/battery-life-image-fy25?scl=1" alt="Surface Laptop">
+                    <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/screen-image-fy25?scl=1"
+                         alt="Closeup of Surface device charging ports" class="slide-image">
                     <div class="caption">
-                        <h4>The speed you need²</h4>
-                        <h3>Faster than a MacBook Air M4</h3>
-                        <p>Surface Laptop with Snapdragon X Elite using Cinebench 24 MT benchmark</p>
+                        <h4>Leave your charger at home <sup>3</sup></h4>
+                        <h3>Up to 23 hours of battery life</h3>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/battery-life-image-fy25?scl=1" alt="Surface Laptop">
+                    <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/security-image-fy25?scl=1"
+                         alt="Inside view of NPU chip" class="slide-image">
                     <div class="caption">
-                        <h4>The speed you need²</h4>
-                        <h3>Faster than a MacBook Air M4</h3>
-                        <p>Surface Laptop with Snapdragon X Elite using Cinebench 24 MT benchmark</p>
+                        <h4>Search, find, and do more <sup>4</sup></h4>
+                        <h3>4x more local AI processing</h3>
                     </div>
                 </div>
             </div>
             <div class="progress-bar"></div>
             <div class="arrows"></div>
         </div>
+        <div class="surface-navigation">
+            <div class="arrows"></div>
+            <div class="progress-bar"></div>
+        </div>
+    </div>
+    <div class="mt-5"></div>
+    <div class="mod-img-text container-fluid xl-container text-center">
+        <div class="content-wrapper">
+            <picture>
+                <source srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/family-color-card-fy25:VP5-1842x1036?fmt=png-alpha" media="(min-width: 1400px)">
+                <source srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/family-color-card-fy25:VP4-1468x826?fmt=png-alpha" media="(min-width: 1084px)">
+                <source srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/family-color-card-fy25:VP3-1236x1236?fmt=png-alpha" media="(min-width: 1024px)">
+                <source srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/family-color-card-fy25:VP2-1718x966?fmt=png-alpha" media="(min-width: 540px)">
+                <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/family-color-card-fy25:VP1-1078x606?fmt=png-alpha" class="card-img rounded-4 img-object-cover mb-4" alt="Family device images with back cover view.">
+            </picture>
+            <div class="content">
+                <h2>See which Surface PC is right for you</h2>
+                <div class="px-4">
+                    <p>Learn more about Copilot+ PCs, compare their specs, and choose the AI-powered laptop or 2-in-1 device
+                        that’s right for you.</p>
+                </div>
+                <a href="#" class="btn btn-primary px-4 py-3 fw-bold">Compare Copilot+ PCs</a>
+            </div>
+        </div>
+    </div>
+    <div class="mt-5"></div>
+    <div class="mt-5"></div>
+    <div class="mod-cards-slider container-fluid xl-container">
+        <h2 class="mb-3">Save on Surface deals</h2>
+        <div class="cards-slider">
+            <div class="cards-slider-inner rounded-4 border-2 border border-secondary-subtle">
+                <div class="cards-slider-item">
+                    <div class="row align-items-center p-3 text-center">
+                        <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/surface-pro-11th-edition-color-desktop-offertool?scl=1" alt="" height="120" class="mb-3">
+                        <div class="card-content">
+                            <div class="mt-3">
+                                <p class="h4 fw-lighter">Save up to $500 on Surface Pro, Copilot+ PC</p>
+                                <p class="h6 fw-lighter">Score savings on a fast, flexible 2-in-1 built for advanced AI experiences.</p>
+                            </div>
+                            <a href="#" class="btn-cta">BUY NOW <i class="bi bi-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="cards-slider-item">
+                    <div class="row align-items-center p-3 text-center">
+                        <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/surface-laptop-7th-edition-platinum-mobile-offertool?scl=1" alt="" height="120" class="mb-3">
+                        <div class="card-content">
+                            <div class="mt-3">
+                                <p class="h4 fw-lighter">Save up to $700 on Surface Laptop, Copilot+ PC, 13.8-inch</p>
+                                <p class="h6 fw-lighter">Best-in-class battery and advanced AI experiences—now on a sleek 13.8” display.</p>
+                            </div>
+                            <a href="#" class="btn-cta">BUY NOW <i class="bi bi-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="cards-slider-item">
+                    <div class="row align-items-center p-3 text-center">
+                        <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/surface-laptop-7th-edition-platinum-mobile-offertool?scl=1" alt="" height="120" class="mb-3">
+                        <div class="card-content">
+                            <div class="mt-3">
+                                <p class="h4 fw-lighter">Save up to $500 on Surface Laptop, Copilot+ PC, 15-inch</p>
+                                <p class="h6 fw-lighter">Power through projects with built-in AI and an expansive 15-inch display.</p>
+                            </div>
+                            <a href="#" class="btn-cta">BUY NOW <i class="bi bi-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="cards-slider-item">
+                    <div class="row align-items-center p-3 text-center">
+                        <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Surface_Laptop_Studio_2_plantinum_render_for_mobile?scl=1" alt="" height="120" class="mb-3">
+                        <div class="card-content">
+                            <div class="mt-3">
+                                <p class="h4 fw-lighter">Save up to $620 on Surface Laptop Studio 2</p>
+                                <p class="h6 fw-lighter">Go from cram sessions to study breaks with the ultimate all-in-one laptop.</p>
+                            </div>
+                            <a href="#" class="btn-cta">BUY NOW <i class="bi bi-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-navigation">
+                <div class="slider-dots"></div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-5"></div>
+    <div class="mod-features container-fluid xl-container">
+        <ul class="text-center d-flex flex-wrap list-inline justify-content-center">
+            <li class="font-weight-semibold mx-4 my-3 d-flex align-items-center card flex-grow-0 border-0">
+                <img src="https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/MSFT-Surface-prefooter-protect-svgicon?wid=40&hei=40"
+                     alt="" width="40" height="40" class="img-fluid flex-shrink-0 mb-2">
+                <a href="#" class="text-break-keep-all">Protect your Surface</a>
+            </li>
+            <li class="font-weight-semibold mx-4 my-3 d-flex align-items-center card flex-grow-0 border-0">
+                <img src="https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/MSFT-Surface-prefooter-business-svgicon?wid=40&hei=40"
+                     alt="" width="40" height="40" class="img-fluid flex-shrink-0 mb-2">
+                <a href="#" class="text-break-keep-all">Surface for your business</a>
+            </li>
+            <li class="font-weight-semibold mx-4 my-3 d-flex align-items-center card flex-grow-0 border-0">
+                <img src="https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/MSFT-Surface-prefooter-accessories-svgicon?wid=40&hei=40"
+                     alt="" width="40" height="40" class="img-fluid flex-shrink-0 mb-2">
+                <a href="#" class="text-break-keep-all">Accessories</a>
+            </li>
+            <li class="font-weight-semibold mx-4 my-3 d-flex align-items-center card flex-grow-0 border-0">
+                <img src="https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/MSFT-surface-prefooter-support-svgicon?wid=40&hei=40"
+                     alt="" width="40" height="40" class="img-fluid flex-shrink-0 mb-2">
+                <a href="#" class="text-break-keep-all">Surface Support</a>
+            </li>
+            <li class="font-weight-semibold mx-4 my-3 d-flex align-items-center card flex-grow-0 border-0">
+                <img src="https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/MSFT-Surface-prefooter-register-svgicon?wid=40&hei=40"
+                     alt="" width="40" height="40" class="img-fluid flex-shrink-0 mb-2">
+                <a href="#" class="text-break-keep-all">Register your Surface</a>
+            </li>
+            <li class="font-weight-semibold mx-4 my-3 d-flex align-items-center card flex-grow-0 border-0">
+                <img src="https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/MSFT-Surface-prefooter-newsletter-svgicon?wid=40&hei=40"
+                     alt="" width="40" height="40" class="img-fluid flex-shrink-0 mb-2">
+                <a href="#" class="text-break-keep-all">Get the Surface Newsletter</a>
+            </li>
+            <li class="font-weight-semibold mx-4 my-3 d-flex align-items-center card flex-grow-0 border-0">
+                <img src="https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/MSFT-Power-cord-recall-icon-1?wid=40&hei=40"
+                     alt="" width="40" height="40" class="img-fluid flex-shrink-0 mb-2">
+                <a href="#" class="text-break-keep-all">Power cord recall</a>
+            </li>
+        </ul>
+    </div>
+    <div class="mt-5"></div>
+    <div class="mt-5"></div>
+    <div class="mod-more-information container-fluid xl-container">
+        <div>
+            <p><a href="#">[1]</a> Available Copilot+ PC experiences vary by device and market. Some Copilot+ PCs
+                require updates continuing to roll out into 2025. See
+                <a href="#">aka.ms/copilotpluspcs</a></p>
+            <p><a href="#">[2]</a> For Surface Laptop 13.8" and 15" with Snapdragon X Elite vs. MacBook Air 15" with M4
+                10-core CPU based on Cinebench 2024 Multi-Core benchmark. Performance varies by device. See
+                <a href="#">aka.ms/cpclaims</a></p>
+            <p><a href="#">[3]</a> For Surface Laptop, 13-inch local video playback test. Battery life varies
+                significantly based on usage, network and feature configuration, signal strength, settings, and other
+                factors. See
+                <a href="#">aka.ms/SurfaceBatteryPerformance</a></p>
+            <p><a href="#">[4]</a> Comparison based on NPU TOPS for Surface Copilot+ PCs versus Surface Laptop 6 and
+                Surface Pro 10 for Business. Actual TOPS performance may vary based on usage conditions and other
+                factors.</p>
+        </div>
+    </div>
+    <div class="mt-5"></div>
+    <div class="mod-social-media container-fluid xl-container">
+        <div class="px-3">
+            <h3 class="h6 fw-normal d-inline align-middle me-3">Follow Surface</h3>
+            <ul class="list-inline d-inline-block align-middle mb-0">
+                <li class="list-inline-item me-3">
+                    <a href="#" class="d-inline-block action-trigger">
+                        <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/facebook?scl=1"
+                             alt="Facebook" width="32" height="32">
+                    </a>
+                </li>
+                <li class="list-inline-item me-3">
+                    <a href="#" class="d-inline-block action-trigger">
+                        <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Icon_NewsSocial_68x68?scl=1"
+                             alt="X" width="32" height="32">
+                    </a>
+                </li>
+                <li class="list-inline-item me-3">
+                    <a href="#" class="d-inline-block action-trigger">
+                        <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/instagram?scl=1"
+                             alt="Instagram" width="32" height="32">
+                    </a>
+                </li>
+                <li class="list-inline-item">
+                    <a href="#" class="d-inline-block action-trigger">
+                        <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/linkedin?scl=1"
+                             alt="LinkedIn" width="32" height="32">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="px-3 mt-5">
+            <h3 class="h6 fw-normal d-inline align-middle me-3">Share this page</h3>
+            <ul class="list-inline d-inline-block align-middle mb-0">
+                <li class="list-inline-item me-3">
+                    <a href="#" class="d-inline-block action-trigger">
+                        <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/facebook?scl=1"
+                             alt="Facebook" width="32" height="32">
+                    </a>
+                </li>
+                <li class="list-inline-item me-3">
+                    <a href="#" class="d-inline-block action-trigger">
+                        <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Icon_NewsSocial_68x68?scl=1"
+                             alt="X" width="32" height="32">
+                    </a>
+                </li>
+                <li class="list-inline-item me-3">
+                    <a href="#" class="d-inline-block action-trigger">
+                        <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/linkedin?scl=1"
+                             alt="LinkedIn" width="32" height="32">
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
 </main>
 <footer>
-    <p>Footer here</p>
+    <div class="nav-footer">
+        <div class="px-3 nav-footer-item">
+            <h3 class="pt-4">What's new</h3>
+            <ul class="list-unstyled">
+                <li class="py-2"><a href="#">Surface Pro</a></li>
+                <li class="py-2"><a href="#">Surface Laptop</a></li>
+                <li class="py-2"><a href="#">Surface Laptop Studio 2</a></li>
+                <li class="py-2"><a href="#">Surface Laptop Go 3</a></li>
+                <li class="py-2"><a href="#">Microsoft Copilot</a></li>
+                <li class="py-2"><a href="#">AI in Windows</a></li>
+                <li class="py-2"><a href="#">Explore Microsoft products</a></li>
+                <li class="py-2"><a href="#">Windows 11 apps</a></li>
+            </ul>
+        </div>
+        <div class="px-3 nav-footer-item">
+            <h3 class="pt-4">Microsoft Store</h3>
+            <ul class="list-unstyled">
+                <li class="py-2"><a href="#">Account profile</a></li>
+                <li class="py-2"><a href="#">Download Center</a></li>
+                <li class="py-2"><a href="#">Microsoft Store support</a></li>
+                <li class="py-2"><a href="#">Returns</a></li>
+                <li class="py-2"><a href="#">Order tracking</a></li>
+                <li class="py-2"><a href="#">Certified Refurbished</a></li>
+                <li class="py-2"><a href="#">Microsoft Store Promise</a></li>
+                <li class="py-2"><a href="#">Flexible Payments</a></li>
+            </ul>
+        </div>
+        <div class="px-3 nav-footer-item">
+            <h3 class="pt-4">Education</h3>
+            <ul class="list-unstyled">
+                <li class="py-2"><a href="#">Microsoft in education</a></li>
+                <li class="py-2"><a href="#">Devices for education</a></li>
+                <li class="py-2"><a href="#">Microsoft Teams for Education</a></li>
+                <li class="py-2"><a href="#">Microsoft 365 Education</a></li>
+                <li class="py-2"><a href="#">How to buy for your school</a></li>
+                <li class="py-2"><a href="#">Educator training and development</a></li>
+                <li class="py-2"><a href="#">Deals for students and parents</a></li>
+                <li class="py-2"><a href="#">AI for education</a></li>
+            </ul>
+        </div>
+        <div class="px-3 nav-footer-item">
+            <h3 class="pt-4">Education</h3>
+            <ul class="list-unstyled">
+                <li class="py-2"><a href="#">Microsoft Cloud</a></li>
+                <li class="py-2"><a href="#">Microsoft Security</a></li>
+                <li class="py-2"><a href="#">Dynamics 365</a></li>
+                <li class="py-2"><a href="#">Microsoft 365</a></li>
+                <li class="py-2"><a href="#">Microsoft Power Platform</a></li>
+                <li class="py-2"><a href="#">Microsoft Teams</a></li>
+                <li class="py-2"><a href="#">Microsoft 365 Copilot</a></li>
+                <li class="py-2"><a href="#">Small Business</a></li>
+            </ul>
+        </div>
+        <div class="px-3 nav-footer-item">
+            <h3 class="pt-4">Developer & IT</h3>
+            <ul class="list-unstyled">
+                <li class="py-2"><a href="#">Azure</a></li>
+                <li class="py-2"><a href="#">Microsoft Developer</a></li>
+                <li class="py-2"><a href="#">Microsoft Learn</a></li>
+                <li class="py-2"><a href="#">Support for AI marketplace apps</a></li>
+                <li class="py-2"><a href="#">Microsoft Tech Community</a></li>
+                <li class="py-2"><a href="#">Azure Marketplace</a></li>
+                <li class="py-2"><a href="#">AppSource</a></li>
+                <li class="py-2"><a href="#">Visual Studio</a></li>
+            </ul>
+        </div>
+        <div class="px-3 nav-footer-item">
+            <h3 class="pt-4">Company</h3>
+            <ul class="list-unstyled">
+                <li class="py-2"><a href="#">Careers</a></li>
+                <li class="py-2"><a href="#">About Microsoft</a></li>
+                <li class="py-2"><a href="#">Company news</a></li>
+                <li class="py-2"><a href="#">Privacy at Microsoft</a></li>
+                <li class="py-2"><a href="#">Investors</a></li>
+                <li class="py-2"><a href="#">Diversity and inclusion</a></li>
+                <li class="py-2"><a href="#">Accessibility</a></li>
+                <li class="py-2"><a href="#">Sustainability</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="sub-nav-footer p-3">
+        <div class="sub-nav-info">
+            <a href="#" class="d-block mb-3"><i class="bi bi-globe-americas"></i> English (United States)</a>
+            <a href="#" class="d-flex align-items-center mb-3">
+                <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 14" xml:space="preserve" height="16"
+                     width="43">
+            <title>Your Privacy Choices Opt-Out Icon</title>
+                    <path d="M7.4 12.8h6.8l3.1-11.6H7.4C4.2 1.2 1.6 3.8 1.6 7s2.6 5.8 5.8 5.8z"
+                          style="fill-rule:evenodd;clip-rule:evenodd;fill:#fff"></path>
+                    <path d="M22.6 0H7.4c-3.9 0-7 3.1-7 7s3.1 7 7 7h15.2c3.9 0 7-3.1 7-7s-3.2-7-7-7zm-21 7c0-3.2 2.6-5.8 5.8-5.8h9.9l-3.1 11.6H7.4c-3.2 0-5.8-2.6-5.8-5.8z"
+                          style="fill-rule:evenodd;clip-rule:evenodd;fill:#06f"></path>
+                    <path d="M24.6 4c.2.2.2.6 0 .8L22.5 7l2.2 2.2c.2.2.2.6 0 .8-.2.2-.6.2-.8 0l-2.2-2.2-2.2 2.2c-.2.2-.6.2-.8 0-.2-.2-.2-.6 0-.8L20.8 7l-2.2-2.2c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0l2.2 2.2L23.8 4c.2-.2.6-.2.8 0z"
+                          style="fill:#fff"></path>
+                    <path d="M12.7 4.1c.2.2.3.6.1.8L8.6 9.8c-.1.1-.2.2-.3.2-.2.1-.5.1-.7-.1L5.4 7.7c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0L8 8.6l3.8-4.5c.2-.2.6-.2.9 0z"
+                          style="fill:#06f"></path>
+            </svg>
+                <span>Your Privacy Choices</span>
+            </a>
+            <a href="#" class="d-block mb-3"><span>Consumer Health Privacy</span></a>
+        </div>
+        <div class="sub-nav-menu">
+            <ul class="list-inline d-inline-block align-middle mb-0">
+                <li class="list-inline-item pt-2 pe-2"><a href="#">Site map</a></li>
+                <li class="list-inline-item pt-2 pe-2"><a href="#">Contact Microsoft</a></li>
+                <li class="list-inline-item pt-2 pe-2"><a href="#">Privacy</a></li>
+                <li class="list-inline-item pt-2 pe-2"><a href="#">Terms of use</a></li>
+                <li class="list-inline-item pt-2 pe-2"><a href="#">Trademarks</a></li>
+                <li class="list-inline-item pt-2 pe-2"><a href="#">Safety & eco</a></li>
+                <li class="list-inline-item pt-2 pe-2"><a href="#">Recycling</a></li>
+                <li class="list-inline-item pt-2 pe-2"><a href="#">About our ads</a></li>
+                <li class="list-inline-item pt-2 pe-2">© Microsoft 2025</li>
+            </ul>
+        </div>
+    </div>
 </footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
@@ -106,6 +513,6 @@
         integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
         crossorigin="anonymous"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-<script src="scripts/slick_slider.js"></script>
+<script src="scripts/slick-slider.js"></script>
 </body>
 </html>

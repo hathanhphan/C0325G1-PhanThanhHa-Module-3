@@ -1,0 +1,43 @@
+@media screen and (min-width: 768px) {
+    .work-mark {
+        height: 32px;
+    }
+
+    h1 {
+        font-size: 3.125rem;
+    }
+
+    .cards-slider-item img {
+        flex: 1;
+        max-width: 304px;
+        margin: 0 !important;
+    }
+    .cards-slider-item .card-content {
+        text-align: left;
+        flex: 1;
+    }
+    .cards-slider-item .card-content > div {
+        margin: 0 !important;
+    }
+    .cards-slider-item .card-content .h4 {
+        font-size: 1.1875rem;
+    }
+    .mod-cards-slider .slider-navigation {
+        gap: 24px;
+    }
+    .mod-cards-slider .slider-navigation .slider-dots .slick-dots {
+        gap: 32px;
+    }
+    footer {
+        margin: 0 !important;
+        max-width: unset !important;
+    }
+    .nav-footer {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+    .nav-footer-item {
+        width: 32%;
+    }
+}
