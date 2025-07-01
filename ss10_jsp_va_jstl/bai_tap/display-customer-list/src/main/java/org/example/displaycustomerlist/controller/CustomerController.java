@@ -20,6 +20,6 @@ public class CustomerController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Customer> customers = customerService.getAll();
         req.setAttribute("customers", customers);
-        req.getRequestDispatcher("customer/index.jsp").forward(req, resp);
+        req.getRequestDispatcher("WEB-INF/customer/index.jsp").forward(req, resp);
     }
 }
