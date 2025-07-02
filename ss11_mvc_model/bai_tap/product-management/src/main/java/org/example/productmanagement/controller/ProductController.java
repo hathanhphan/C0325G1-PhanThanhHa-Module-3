@@ -25,42 +25,18 @@ public class ProductController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
         if (action == null) action = "";
-        String id;
-        Product existing;
         switch (action) {
             case "create":
-                req.setAttribute("product", new Product());
-                req.getRequestDispatcher("WEB-INF/product/save.jsp").forward(req, resp);
+                getCreate(req, resp);
                 break;
             case "update":
-                id = req.getParameter("id");
-                existing = productService.findById(id);
-                if (existing != null) {
-                    req.setAttribute("product", existing);
-                    req.getRequestDispatcher("WEB-INF/product/save.jsp").forward(req, resp);
-                } else {
-                    resp.sendRedirect(req.getContextPath() + "/product");
-                }
+                getUpdate(req, resp);
                 break;
             case "detail":
-                id = req.getParameter("id");
-                existing = productService.findById(id);
-                if (existing != null) {
-                    req.setAttribute("product", existing);
-                    req.getRequestDispatcher("WEB-INF/product/detail.jsp").forward(req, resp);
-                } else {
-                    resp.sendRedirect(req.getContextPath() + "/product");
-                }
+                getDetail(req, resp);
                 break;
             default:
-                String searchKeyword = req.getParameter("q");
-                if (searchKeyword != null && !searchKeyword.isEmpty()) {
-                    req.setAttribute("searchKeyword", searchKeyword);
-                    req.setAttribute("products", productService.searchByName(searchKeyword, false, false));
-                } else {
-                    req.setAttribute("products", productService.findAll());
-                }
-                req.getRequestDispatcher("WEB-INF/product/list.jsp").forward(req, resp);
+                getList(req, resp);
         }
     }
 
@@ -69,52 +45,16 @@ public class ProductController extends HttpServlet {
         String action = req.getParameter("action");
         if (action == null) action = "";
         HttpSession session = req.getSession();
-        boolean isSuccess;
         switch (action) {
-            case "create": {
-                Product p = parseProductFromRequest(req);
-                try {
-                    isSuccess = productService.add(p);
-                    if (isSuccess) {
-                        session.setAttribute("successMessage", "Thêm mới sản phẩm thành công");
-                    } else {
-                        session.setAttribute("errorMessage", "Thêm mới sản phẩm thất bại");
-                    }
-                    resp.sendRedirect(req.getContextPath() + "/product");
-                    return;
-                } catch (ConstraintViolationException ex) {
-                    forwardWithErrors(req, resp, p, ex);
-                    return;
-                }
-            }
-            case "update": {
-                Product p = parseProductFromRequest(req);
-                try {
-                    isSuccess = productService.update(p);
-                    if (isSuccess) {
-                        session.setAttribute("successMessage", "Cập nhật sản phẩm thành công");
-                    } else {
-                        session.setAttribute("errorMessage", "Cập nhật sản phẩm thất bại");
-                    }
-                    resp.sendRedirect(req.getContextPath() + "/product");
-                    return;
-                } catch (ConstraintViolationException ex) {
-                    forwardWithErrors(req, resp, p, ex);
-                    return;
-                }
-            }
-            case "delete": {
-                String id = req.getParameter("id");
-                isSuccess = productService.delete(id);
-                if (isSuccess) {
-                    session.setAttribute("successMessage", "Xoá sản phẩm thành công");
-                } else {
-                    session.setAttribute("errorMessage", "Xoá sản phẩm thất bại");
-                }
-                resp.sendRedirect(req.getContextPath() + "/product");
+            case "create":
+                postCreate(req, resp, session);
                 return;
-            }
-
+            case "update":
+                postUpdate(req, resp, session);
+                return;
+            case "delete":
+                postDelete(req, resp, session);
+                return;
             default:
                 resp.sendRedirect(req.getContextPath() + "/product");
         }
@@ -151,5 +91,89 @@ public class ProductController extends HttpServlet {
         req.setAttribute("product", p);
         req.getRequestDispatcher("WEB-INF/product/save.jsp")
                 .forward(req, resp);
+    }
+
+    private void getCreate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setAttribute("product", new Product());
+        req.getRequestDispatcher("WEB-INF/product/save.jsp").forward(req, resp);
+    }
+
+    private void getUpdate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Product existing;
+        String id;
+        id = req.getParameter("id");
+        existing = productService.findById(id);
+        if (existing != null) {
+            req.setAttribute("product", existing);
+            req.getRequestDispatcher("WEB-INF/product/save.jsp").forward(req, resp);
+        } else {
+            resp.sendRedirect(req.getContextPath() + "/product");
+        }
+    }
+
+    private void getDetail(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Product existing;
+        String id;
+        id = req.getParameter("id");
+        existing = productService.findById(id);
+        if (existing != null) {
+            req.setAttribute("product", existing);
+            req.getRequestDispatcher("WEB-INF/product/detail.jsp").forward(req, resp);
+        } else {
+            resp.sendRedirect(req.getContextPath() + "/product");
+        }
+    }
+
+    private void getList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String searchKeyword = req.getParameter("q");
+        if (searchKeyword != null && !searchKeyword.isEmpty()) {
+            req.setAttribute("searchKeyword", searchKeyword);
+            req.setAttribute("products", productService.searchByName(searchKeyword, false, false));
+        } else {
+            req.setAttribute("products", productService.findAll());
+        }
+        req.getRequestDispatcher("WEB-INF/product/list.jsp").forward(req, resp);
+    }
+
+    private void postCreate(HttpServletRequest req, HttpServletResponse resp, HttpSession session) throws IOException, ServletException {
+        Product p = parseProductFromRequest(req);
+        try {
+            boolean isSuccess = productService.add(p);
+            if (isSuccess) {
+                session.setAttribute("successMessage", "Thêm mới sản phẩm thành công");
+            } else {
+                session.setAttribute("errorMessage", "Thêm mới sản phẩm thất bại");
+            }
+            resp.sendRedirect(req.getContextPath() + "/product");
+        } catch (ConstraintViolationException ex) {
+            forwardWithErrors(req, resp, p, ex);
+        }
+    }
+
+    private void postUpdate(HttpServletRequest req, HttpServletResponse resp, HttpSession session) throws IOException, ServletException {
+        Product p = parseProductFromRequest(req);
+        try {
+            boolean isSuccess = productService.update(p);
+            if (isSuccess) {
+                session.setAttribute("successMessage", "Cập nhật sản phẩm thành công");
+            } else {
+                session.setAttribute("errorMessage", "Cập nhật sản phẩm thất bại");
+            }
+            resp.sendRedirect(req.getContextPath() + "/product");
+        } catch (ConstraintViolationException ex) {
+            forwardWithErrors(req, resp, p, ex);
+        }
+    }
+
+    private void postDelete(HttpServletRequest req, HttpServletResponse resp, HttpSession session) throws IOException {
+        boolean isSuccess;
+        String id = req.getParameter("id");
+        isSuccess = productService.delete(id);
+        if (isSuccess) {
+            session.setAttribute("successMessage", "Xoá sản phẩm thành công");
+        } else {
+            session.setAttribute("errorMessage", "Xoá sản phẩm thất bại");
+        }
+        resp.sendRedirect(req.getContextPath() + "/product");
     }
 }

@@ -26,57 +26,18 @@ public class UserController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
         if (action == null) action = "";
-        String id;
-        User existing;
         switch (action) {
             case "create":
-                req.setAttribute("user", new User());
-                req.getRequestDispatcher("WEB-INF/user/save.jsp").forward(req, resp);
+                getCreate(req, resp);
                 break;
             case "update":
-                try {
-                    id = req.getParameter("id");
-                    existing = userService.findById(Integer.parseInt(id));
-                    if (existing != null) {
-                        req.setAttribute("user", existing);
-                        req.getRequestDispatcher("WEB-INF/user/save.jsp").forward(req, resp);
-                    } else {
-                        resp.sendRedirect(req.getContextPath() + "/user");
-                    }
-                } catch (NumberFormatException e) {
-                    System.out.println(e.getMessage());
-                    resp.sendRedirect(req.getContextPath() + "/user");
-                }
+                getUpdate(req, resp);
                 break;
             case "detail":
-                try {
-                    id = req.getParameter("id");
-                    existing = userService.findById(Integer.parseInt(id));
-                    if (existing != null) {
-                        req.setAttribute("user", existing);
-                        req.getRequestDispatcher("WEB-INF/user/detail.jsp").forward(req, resp);
-                    } else {
-                        resp.sendRedirect(req.getContextPath() + "/user");
-                    }
-                } catch (NumberFormatException e) {
-                    System.out.println(e.getMessage());
-                    resp.sendRedirect(req.getContextPath() + "/user");
-                }
+                getDetail(req, resp);
                 break;
             default:
-                String q = req.getParameter("q");
-                String sortField = req.getParameter("sort");
-                String dir = req.getParameter("dir");
-                boolean asc = !"desc".equalsIgnoreCase(dir);
-                List<User> users = (q != null && !q.isEmpty())
-                        ? userService.searchByCountry(q, sortField, asc)
-                        : userService.findAll(sortField, asc);
-                req.setAttribute("searchKeyword", q);
-                req.setAttribute("currentSort", sortField);
-                req.setAttribute("currentDir", dir);
-                req.setAttribute("users", users);
-                req.getRequestDispatcher("WEB-INF/user/list.jsp")
-                        .forward(req, resp);
+                getList(req, resp);
         }
     }
 
@@ -85,57 +46,16 @@ public class UserController extends HttpServlet {
         String action = req.getParameter("action");
         if (action == null) action = "";
         HttpSession session = req.getSession();
-        boolean isSuccess;
         switch (action) {
-            case "create": {
-                User user = parseUserFromRequest(req);
-                try {
-                    isSuccess = userService.add(user);
-                    if (isSuccess) {
-                        session.setAttribute("successMessage", "Thêm mới người dùng thành công");
-                    } else {
-                        session.setAttribute("errorMessage", "Thêm mới người dùng thất bại");
-                    }
-                    resp.sendRedirect(req.getContextPath() + "/user");
-                    return;
-                } catch (ConstraintViolationException ex) {
-                    forwardWithErrors(req, resp, user, ex);
-                    return;
-                }
-            }
-            case "update": {
-                User user = parseUserFromRequest(req);
-                try {
-                    isSuccess = userService.update(user);
-                    if (isSuccess) {
-                        session.setAttribute("successMessage", "Cập nhật người dùng thành công");
-                    } else {
-                        session.setAttribute("errorMessage", "Cập nhật người dùng thất bại");
-                    }
-                    resp.sendRedirect(req.getContextPath() + "/user");
-                    return;
-                } catch (ConstraintViolationException ex) {
-                    forwardWithErrors(req, resp, user, ex);
-                    return;
-                }
-            }
-            case "delete": {
-                String id = req.getParameter("id");
-                try {
-                    isSuccess = userService.delete(Integer.parseInt(id));
-                    if (isSuccess) {
-                        session.setAttribute("successMessage", "Xoá người dùng thành công");
-                    } else {
-                        session.setAttribute("errorMessage", "Xoá người dùng thất bại");
-                    }
-                    resp.sendRedirect(req.getContextPath() + "/user");
-                } catch (NumberFormatException e) {
-                    System.out.println(e.getMessage());
-                    resp.sendRedirect(req.getContextPath() + "/user");
-                }
+            case "create":
+                postCreate(req, resp, session);
                 return;
-            }
-
+            case "update":
+                postUpdate(req, resp, session);
+                return;
+            case "delete":
+                postDelete(req, resp, session);
+                return;
             default:
                 resp.sendRedirect(req.getContextPath() + "/user");
         }
@@ -169,5 +89,104 @@ public class UserController extends HttpServlet {
         req.setAttribute("user", user);
         req.getRequestDispatcher("WEB-INF/user/save.jsp")
                 .forward(req, resp);
+    }
+
+    private void getCreate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setAttribute("user", new User());
+        req.getRequestDispatcher("WEB-INF/user/save.jsp").forward(req, resp);
+    }
+
+    private void getUpdate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try {
+            String id = req.getParameter("id");
+            User existing = userService.findById(Integer.parseInt(id));
+            if (existing != null) {
+                req.setAttribute("user", existing);
+                req.getRequestDispatcher("WEB-INF/user/save.jsp").forward(req, resp);
+            } else {
+                resp.sendRedirect(req.getContextPath() + "/user");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
+            resp.sendRedirect(req.getContextPath() + "/user");
+        }
+    }
+
+    private void getDetail(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try {
+            String id = req.getParameter("id");
+            User existing = userService.findById(Integer.parseInt(id));
+            if (existing != null) {
+                req.setAttribute("user", existing);
+                req.getRequestDispatcher("WEB-INF/user/detail.jsp").forward(req, resp);
+            } else {
+                resp.sendRedirect(req.getContextPath() + "/user");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
+            resp.sendRedirect(req.getContextPath() + "/user");
+        }
+    }
+
+    private void getList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String q = req.getParameter("q");
+        String sortField = req.getParameter("sort");
+        String dir = req.getParameter("dir");
+        boolean asc = !"desc".equalsIgnoreCase(dir);
+        List<User> users = (q != null && !q.isEmpty())
+                ? userService.searchByCountry(q, sortField, asc)
+                : userService.findAll(sortField, asc);
+        req.setAttribute("searchKeyword", q);
+        req.setAttribute("currentSort", sortField);
+        req.setAttribute("currentDir", dir);
+        req.setAttribute("users", users);
+        req.getRequestDispatcher("WEB-INF/user/list.jsp")
+                .forward(req, resp);
+    }
+
+    private void postCreate(HttpServletRequest req, HttpServletResponse resp, HttpSession session) throws IOException, ServletException {
+        User user = parseUserFromRequest(req);
+        try {
+            boolean isSuccess = userService.add(user);
+            if (isSuccess) {
+                session.setAttribute("successMessage", "Thêm mới người dùng thành công");
+            } else {
+                session.setAttribute("errorMessage", "Thêm mới người dùng thất bại");
+            }
+            resp.sendRedirect(req.getContextPath() + "/user");
+        } catch (ConstraintViolationException ex) {
+            forwardWithErrors(req, resp, user, ex);
+        }
+    }
+
+    private void postUpdate(HttpServletRequest req, HttpServletResponse resp, HttpSession session) throws IOException, ServletException {
+        User user = parseUserFromRequest(req);
+        try {
+            boolean isSuccess = userService.update(user);
+            if (isSuccess) {
+                session.setAttribute("successMessage", "Cập nhật người dùng thành công");
+            } else {
+                session.setAttribute("errorMessage", "Cập nhật người dùng thất bại");
+            }
+            resp.sendRedirect(req.getContextPath() + "/user");
+        } catch (ConstraintViolationException ex) {
+            forwardWithErrors(req, resp, user, ex);
+        }
+    }
+
+    private void postDelete(HttpServletRequest req, HttpServletResponse resp, HttpSession session) throws IOException {
+        try {
+            String id = req.getParameter("id");
+            boolean isSuccess = userService.delete(Integer.parseInt(id));
+            if (isSuccess) {
+                session.setAttribute("successMessage", "Xoá người dùng thành công");
+            } else {
+                session.setAttribute("errorMessage", "Xoá người dùng thất bại");
+            }
+            resp.sendRedirect(req.getContextPath() + "/user");
+        } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
+            resp.sendRedirect(req.getContextPath() + "/user");
+        }
     }
 }
